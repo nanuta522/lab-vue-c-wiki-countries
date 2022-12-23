@@ -18,16 +18,12 @@ export default {
   },
   data() {
     return {
-      data: [],
-      selectedCountry: null
+      data: []
     }
   },
-  async created() {
+  async create() {
     const response = await fetch(`https://ih-countries-api.herokuapp.com/countries`)
     this.data = await response.json()
-  },
-  methods: {
-
   }
 }
 </script>

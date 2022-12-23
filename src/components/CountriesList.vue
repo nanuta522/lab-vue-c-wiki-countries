@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 list">
-                <ul v-if="data" v-for="country in data" :key="country.alpha3Code">
+                <ul v-if="data" v-for="country in data" :key="country._id">
                     <router-link :to="`/list/${country.alpha3Code}`" style="text-decoration: none; color: inherit;">
                         <li @borderSelected="borderHandler" @click="countryHandler(country)">
                             <img :src="`https://flagpedia.net/data/flags/icon/72x54/${country.alpha2Code.toLowerCase()}.png`"
@@ -31,12 +31,12 @@ export default {
     },
     data() {
         return {
-            selectedCountry: null,
+            selectedCountry: null
         }
     },
     created() {
         let alpha3Code = this.$route.params.alpha3Code
-        if (alpha3Code) this.selectedCountry = this.data.find(country => country.alpha3Code === alpha3Code)
+        if (alpha3Code) this.selectedCountry = this.data.find(country => country.alpha3Code.toEqual(alpha3Code))
     },
     props: {
         data: {
@@ -54,7 +54,7 @@ export default {
     },
     watch: {
         '$route.params.alpha3Code'() {
-            if (this.data) this.selectedCountry = this.data.find(country => country.alpha3Code === this.$route.params.alpha3Code)
+            if (this.data) this.selectedCountry = this.data.find(country => country.alpha3Code.toEqual(this.$route.params.alpha3Code))
         }
     }
 }

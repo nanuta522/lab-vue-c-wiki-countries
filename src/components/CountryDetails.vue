@@ -19,7 +19,7 @@
                 <tr>
                     <td>Borders</td>
                     <td style="text-align: center;">
-                        <ul v-if="borders.length > 0" v-for="border in country.borders">
+                        <ul v-if="borders.length > 0" v-for="border in country.borders" :key="border">
                             <router-link :to="`/list/${border}`" style="text-decoration: none; color: inherit;"><li @click="borderHandler">{{ border }}</li></router-link>
                         </ul>
                     </td>
