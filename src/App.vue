@@ -21,7 +21,7 @@ export default {
       data: []
     }
   },
-  async create() {
+  async created() {
     const response = await fetch(`https://ih-countries-api.herokuapp.com/countries`)
     this.data = await response.json()
   }
