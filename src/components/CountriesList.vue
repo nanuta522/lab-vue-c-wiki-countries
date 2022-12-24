@@ -16,7 +16,7 @@
             <div class="col-md-1"></div>
 
             <div class="col-md-6 details sticky">
-                <CountryDetails :country="selectedCountry" />
+                <CountryDetails v-if="selectedCountry && data" :country="selectedCountry" :countryList="data"/>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@ export default {
     },
     created() {
         let alpha3Code = this.$route.params.alpha3Code
-        if (alpha3Code) this.selectedCountry = this.data.find(country => country.alpha3Code.toEqual(alpha3Code))
+        if (alpha3Code) this.selectedCountry = this.data.find(country => country.alpha3Code === alpha3Code)
     },
     props: {
         data: {
@@ -54,7 +54,7 @@ export default {
     },
     watch: {
         '$route.params.alpha3Code'() {
-            if (this.data) this.selectedCountry = this.data.find(country => country.alpha3Code.toEqual(this.$route.params.alpha3Code))
+            if (this.data) this.selectedCountry = this.data.find(country => country.alpha3Code === this.$route.params.alpha3Code)
         }
     }
 }
