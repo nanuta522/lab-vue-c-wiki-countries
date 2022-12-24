@@ -22,8 +22,7 @@
                         <ul v-if="borders.length > 0" v-for="border in country.borders" :key="border">
                             <router-link :to="`/list/${border}`" style="text-decoration: none; color: inherit;">
                                 <li @click="borderHandler">{{ countryList.length > 0 ? border = countryList.find(country => country.alpha3Code ===
-                                        border).name.common : border
-                                }}</li>
+                                        border).name.common : border}}</li>
                             </router-link>
                         </ul>
                     </td>
