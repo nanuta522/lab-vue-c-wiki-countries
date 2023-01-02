@@ -2,7 +2,7 @@
   <div class="app">
     <NavBar />
     <div class="container mt-5">
-      <CountriesList v-if="data" :data="data" />
+      <CountriesList v-if="data.length" :data="data" />
     </div>
   </div>
 </template>
