@@ -2,7 +2,8 @@
   <div class="app">
     <NavBar />
     <div class="container mt-5">
-      <CountriesList v-if="data.length" :data="data" />
+      <h1 v-if="!data.length">Loading Countries...</h1>
+      <CountriesList v-else :data="data" />
     </div>
   </div>
 </template>
